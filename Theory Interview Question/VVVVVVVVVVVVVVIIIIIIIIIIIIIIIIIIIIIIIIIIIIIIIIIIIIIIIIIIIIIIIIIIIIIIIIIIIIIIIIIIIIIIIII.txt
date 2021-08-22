@@ -3,3 +3,4 @@ https://github.com/Awesome-Open-Soure/notes
 
 https://github.com/omonimus1/competitive-programming
 
+vscode://vscode.github-authentication/did-authenticate?windowid=1&code=392f9a1f24fe6b3817b7&state=cd93975a-973f-4121-9773-12b281fce8d2
