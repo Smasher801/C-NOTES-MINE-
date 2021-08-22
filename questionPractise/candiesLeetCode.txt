@@ -1,0 +1,51 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include<climits>
+
+using namespace std;
+
+ bool* isgreat(int a[],int n,int x,bool c[]){
+     int maxNo = INT_MIN;
+      for(int i=0;i<n;i++){
+          maxNo = max(a[i],maxNo);
+      }
+      
+      for(int i=0;i<n;i++){
+          if(a[i] + x >= maxNo){
+              c[i] = true;
+          } else{
+              c[i]= false;
+          }
+      }
+      return c;
+}
+int main()
+{  
+   int n; 
+   cin>>n;
+   int a[n];
+   for(int i=0;i<n;i++){
+       cin>>a[i];
+   }
+   int x;
+   cin>>x;
+   bool c[n];
+   bool *p;
+   p = isgreat(a,n,x,c);
+   for(int i=0;i<n;i++){
+        cout<< *(p+i) <<endl;
+   }
+  
+
+    return 0;
+}
+
+
+

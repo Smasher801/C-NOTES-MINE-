@@ -1,0 +1,85 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+struct node {
+    node * prev;
+   int data;
+   node *next;
+} *head = NULL ; 
+
+
+
+
+   void display (node *p ){
+       while ( p ) {
+           cout << p -> data << " ";
+           p = p-> next;
+       }
+       cout << "\n";
+   }
+   
+   int Length ( node *p ){
+       int len = 0 ;
+        while ( p ){
+            len++;
+            p = p -> next;
+        }
+        return len;
+   }
+
+int main()
+{
+     
+    node * second = NULL;
+    node * third = NULL;
+    node * fourth = NULL;
+    node * fifth = NULL;
+    
+    
+    head = new node;
+    second = new node;
+     third = new node;
+     fourth = new node;
+     fifth = new node;
+     
+    
+    head -> prev = NULL;
+    head -> data = 10;
+    head -> next = second;
+    
+     second -> prev = head;
+     second -> data = 8;
+     second -> next = third;
+    
+    third -> prev = second; 
+     third -> data =2;
+     third -> next = fourth;
+     
+     fourth -> prev = third;
+     fourth -> data = 11;
+     fourth -> next = fifth;
+     
+     fifth -> prev = fourth;
+     fifth -> data = 15;
+     fifth -> next = NULL;
+     
+     display(head);
+     
+     cout <<" the length of doubly linked list is = "<< " " <<Length(head);
+     
+     
+     
+     
+     
+    return 0;
+}
+
+

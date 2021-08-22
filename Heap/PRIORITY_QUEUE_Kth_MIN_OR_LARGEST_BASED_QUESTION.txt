@@ -1,0 +1,81 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include<queue>
+
+using namespace std;
+// by default max heap implementation............
+// in case of max heap we get result in form of descending order..................
+// here by doing some modification of like using - sign it will create min heap...
+//  in case of min heap we get result in form of ascending order....................
+// priority_queue <int> pq;
+//         pq.push(-5);
+//         pq.push(-15);
+//         pq.push(-10);
+//         cout <<"the size of the priority queue is"<<" "<< pq.size()<<"\n";
+//         while(!pq.empty()){
+//             cout << -pq.top()<<" ";
+//             pq.pop();
+//         }
+       
+int kthMin(int A[],int k,int n){
+    priority_queue <int> pq;
+      for(int i=0;i<k;i++){
+          pq.push(A[i]);
+      }
+      for(int i=k;i<n;i++){
+          if(pq.top() > A[i] ){
+              pq.pop();
+              pq.push(A[i]);
+          }
+      }
+      return pq.top();
+}       
+       
+
+int KthLargest (int A[],int k,int n){
+     priority_queue <int> pq;
+       for(int i=0;i<k;i++){
+             pq.push(-A[i]);
+       }
+       for(int i=k; i<n;i++){
+           if(-pq.top() < A[i]){
+               pq.pop();
+               pq.push(-A[i]);
+           }
+       }
+        
+        
+        
+        
+        return -pq.top();
+    
+}
+
+
+int main()
+
+{    
+    int n,k;
+    cout<< "Enter the size"<<" ";
+     cin >> n;
+     
+    int A[n];
+    for(int i=0;i<n;i++){
+        cin>> A[i];
+    }
+    cout << "enter the k value"<<" ";
+     cin >> k;
+   cout << "The kth largest element is"<<" "<<KthLargest(A,k,n)<<"\n";
+   cout << "The kth minimum element is"<<" "<<kthMin(A,k,n);
+    return 0;
+}
+
+
+

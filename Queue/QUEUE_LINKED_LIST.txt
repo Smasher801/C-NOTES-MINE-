@@ -1,0 +1,78 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+struct node{
+    int data;
+    node *next;
+    
+} *front = NULL, *rear = NULL ;
+
+void enqueue (int x){
+    node *t;
+    t = new node;
+    if(t == NULL){
+        cout << "queue is full";
+    }
+    else{
+        t -> data = x;
+        t -> next = NULL;
+        if(front == NULL){
+            front = rear = t;
+        }
+        else {
+            rear -> next = t;
+            rear = t;
+        }
+    }
+}
+int dequeue (){
+    int x = -1;
+    node *p;
+    if (front == NULL){
+        cout << "empty";
+    }
+    else {
+        p = front;
+        front = front -> next;
+        x = p->data;
+        delete p;
+    }
+    return x;
+}
+
+void Display (){
+    node *p = front;
+    while(p){
+        cout << p->data << " ";
+        p = p->next;
+    }
+    cout << "\n";
+}
+
+
+
+
+
+int main()
+{
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    enqueue(40);
+    enqueue(50);
+    
+    Display();
+    
+    cout <<"Deleted data is"<<" "<< dequeue()  <<"\n";
+     Display();
+    return 0;
+}

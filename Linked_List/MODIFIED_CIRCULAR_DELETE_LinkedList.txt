@@ -1,0 +1,116 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+struct node {
+   int data;
+   node *next;
+} *head = NULL ; 
+
+void printHead( node *p ){
+     do {
+         
+         cout << p -> data <<" ";
+         p = p -> next;
+     } while (p!=head);
+}
+
+
+int Length (node *p){
+    int len =0;
+    do {
+         
+         len++;
+         p = p -> next;
+     } while (p!=head);
+     
+     return len;
+    
+}
+
+int Delete (int pos){
+    node *p = NULL ;
+    node *q = NULL;
+    
+    int x,i;
+    
+    if (pos<1  || pos > Length(head) ){
+        return -1;
+    }
+    
+    if (pos == 1){
+        p = head;
+        while(p->next!=head){
+            p = p->next;
+        }
+        x = head ->data;
+        if(p==head){
+            delete head;
+            head = NULL;
+        }
+        else{
+            p->next = head -> next;
+            delete head;
+            head = p -> next;
+        }
+    }
+    else  {
+    
+        p = head;
+        for(i = 0; i < pos-2; i++){
+            p= p-> next;
+        }
+        q = p -> next;
+        p -> next = q -> next;
+        x = q -> data;
+        delete q;
+    }
+    return x;
+}
+
+
+
+
+int main()
+{
+     
+    node * second = NULL;
+    node * third = NULL;
+    
+    head = new node;
+    second = new node;
+     third = new node;
+    
+    head -> data = 11;
+    head -> next = second;
+     second -> data = 15;
+     second -> next = third;
+     
+     third -> data =67;
+     third -> next = head;
+     
+     printHead(head);
+     
+     int pos;
+     cout << "\n enter the position ="<< " ";
+     cin >> pos;
+     
+     int x = Delete(pos);
+     cout << "deleted data" << " "<< x << endl;
+     
+     printHead(head);
+     
+     
+    return 0;
+}
+
+
+
+

@@ -1,0 +1,99 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+// all the test cases pass
+//  1.  pos = 0
+//  2.  middle 
+//  3. last  
+//  4. pos < 0;
+//  5. pos > length   (here the length of the linked list is 3)
+
+
+#include <iostream>
+
+using namespace std;
+struct node {
+   int data;
+   node *next;
+} *head = NULL ; 
+
+void printHead( node *p ){
+     while(p!=NULL){
+         cout << p -> data << " " ;
+         
+          p = p -> next;
+     }
+}
+int Length (node *p){
+    int len =0;
+    while (p!=NULL){
+        len++ ;
+        p = p -> next;
+        
+    }
+    return len;
+}
+
+void insert (int pos, int x){
+     node *t, *p ;
+     if ( pos < 0 || pos > Length(head) ){
+         return ;
+     }
+     if (pos == 0 ){
+         t = new node;
+         t -> data = x;
+         t -> next = head;
+         head = t;
+     }
+     else if (pos > 0 ){
+         p = head;
+         for (int i=0;i < pos-1  ; i++ ){
+             p = p -> next;
+         }
+         t = new node;
+         t -> data = x ;
+         t -> next = p -> next;
+         p -> next = t;
+         
+     }
+}
+
+int main()
+{
+     
+    node * second = NULL;
+    node * third = NULL;
+    
+    head = new node;
+    second = new node;
+     third = new node;
+    
+    head -> data = 10;
+    head -> next = second;
+     second -> data = 20;
+     second -> next = third;
+     
+     third -> data =30;
+     third -> next = NULL;
+     
+     printHead(head);
+     int pos;
+     int x;
+     cout << "\n enter the position at which you want to insert ";
+     
+     cin >> pos;
+     cout << "enter the data you want to insert \n";
+     
+     cin >> x;
+     insert(pos,x);
+
+     printHead(head);
+     
+     
+    return 0;
+}
+

@@ -1,0 +1,78 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+struct queue {
+    int size;
+    int front;
+    int rear;
+    int *Q;
+};
+
+void create (queue *a){
+    cout << "enter the size"<<" ";
+    cin >> a->size;
+    a->Q = new int[a->size];
+    a->front = a->rear = -1 ;
+}
+
+void Display(queue a){
+    for(int i=a.front+1;i<=a.rear;i++){
+        cout << a.Q[i] << " " ;
+    }
+    cout<<"\n";
+}
+void enqueue (queue *a,int x){
+      if(a->rear==a->size-1){
+          cout << "overflow"<<"\n";
+      }
+      else{
+          a->rear++;
+          a->Q[a->rear] = x;
+          
+      }
+}
+
+int dequeue (queue *a){
+    int x = -1;
+    if(a->front == a->rear){
+        cout << "empty"<<"\n";
+    }
+    else {
+        a->front++;
+        x = a->Q[a->front];
+    }
+    return x;
+}
+
+
+
+int main()
+{
+    queue a;
+    create(&a);
+    
+    
+    enqueue(&a,10);
+    enqueue(&a,20);
+    enqueue(&a,30);
+    enqueue(&a,40);
+    enqueue(&a,50);
+    
+    Display(a);
+     cout << "deleted value is"<<" " <<  dequeue(&a) << "\n" ;
+    Display(a);
+    
+    
+    return 0;
+}
+
+
