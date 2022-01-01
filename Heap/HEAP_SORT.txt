@@ -6,6 +6,9 @@ Write your code in this editor and press "Run" button to compile and execute it.
 
 *******************************************************************************/
 
+
+//  see the heap sort problem of gfg  to better understand this ..................
+
 #include <iostream>
 
 using namespace std;
